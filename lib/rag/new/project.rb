@@ -39,7 +39,7 @@ class Project
 	def create
 		create_project_directory
 		if name=="."
-			copy_files :overwrite => true
+			copy_files
 		else
 			copy_files :overwrite => true
 		end
@@ -58,11 +58,8 @@ class Project
 
 	def copy_files o={}
 		Pa.each_r Rc.pa.template.join(options[:template]) do |pa, relative, e|
-			#pd :Each, pa, relative, e
 			# skip *~
 			next if pa.b =~ /~$/
-
-			next unless pa.b =~ /README/
 
 			# convert file_name to @name
 			dest = @dest.join(relative.gsub(/file_name/, name))
@@ -98,7 +95,6 @@ class Project
 
 	# not rescurive copy
 	def copy_file src, dest
-		pd :Copy, src,dest, src.e
 		if src.e=='erb'
 			copy_erb_file src, dest.sub(/\.erb$/,'')
 		else
@@ -122,7 +118,6 @@ class Project
 
 		config = home_config.merge(app_config).merge(cli_config)
 		config["project"] = name
-		pd config
 
 		config
 	end

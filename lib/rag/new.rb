@@ -5,6 +5,7 @@ class Rag
 	method_option "author", 		type: :string, banner: "NAME", desc: "the project's author name"
 	method_option "email", 			type: :string, desc: "author's email address"
 	method_option "template", 	type: :string, default: "default", banner: "NAME", desc: "which template to use"
+	method_option "name", 			type: :string, default: "default", banner: "NAME", desc: "rag new . [--name hello] default from File.basename(cur_path)"
 	def new name
 		check_first_time
 

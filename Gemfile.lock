@@ -1,6 +1,6 @@
 GIT
   remote: file:///home/guten/dev/rb/tagen
-  revision: b52eaa56413a7912b5d1d36ae74f83256fd205f7
+  revision: 158b6ae8ded2a38c346e3759e338fa435bd1222f
   specs:
     tagen (0.2.3)
       activesupport

@@ -1,9 +1,7 @@
 #!/usr/bin/env ruby
-#require_relative "../lib/rag"
 require "rag"
 
 # default plugin
-#require_relative "../lib/rag/new"
 require "rag/new"
 
 # Ragfile
