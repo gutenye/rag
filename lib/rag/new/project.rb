@@ -25,14 +25,11 @@ class Project
 	end
 	extend ClassMethods
 
-	attr_reader :options, :name
+	attr_reader :options, :name, :project
 	def initialize name, o={}
 		@name = name
 		@options = o
 		@project = name=="." ? (o["name"] || Pa.pwd2.base) : name
-
-
-
 		@dest = Pa(@name)
 	end
 
@@ -61,44 +58,47 @@ class Project
 			# skip *~
 			next if pa.b =~ /~$/
 
-			# convert file_name to @name
-			dest = @dest.join(relative.gsub(/file_name/, name))
-			path_msg = relative.gsub(/file_name/,name).gsub(/\.erb$/,'')
+			# convert __project__ to @name
+			dest = @dest.join(relative.gsub(/__project__/, project))
+			path_msg = relative.gsub(/__project__/,project).gsub(/\.erb$/,'')
 
-			if not o[:overwrite] and dest.exists?
+			# skip directory not file
+			next if dest.exists? and dest.directory? 
+
+			if not o[:overwrite] and (dest.exists? or dest.sub(/\.erb$/, '').exists?)
 				print "Overwrite #{path_msg}? [yna] "
-				case readline.strip
+				case $stdin.gets.rstrip
 				when "y"
-					puts "overwrite #{path_msg}"
-					copy_file pa, dest
+					puts "[overwrite] #{path_msg}"
+					copy_file pa, dest, o
 				when "a"
-					puts "overwrite #{path_msg}"
+					puts "[overwrite] #{path_msg}"
 					o[:overwrite] = true
-					copy_file pa, dest
+					copy_file pa, dest, o
 				when "q"
 					exit
 				else
-					puts "skip #{path_msg}"
+					puts "[skip] #{path_msg}"
 					next
 				end
 			elsif o[:overwrite] and dest.exists?
-				puts "overwrite #{path_msg}"
-				copy_file pa, dest
+				puts "[overwrite] #{path_msg}"
+				copy_file pa, dest, o
 			else
 				# classify: file dir/
-				puts "create #{path_msg}" + (dest.directory? ? '/' : '')
-				copy_file pa, dest
+				puts "[create] #{path_msg}" + (dest.directory? ? '/' : '')
+				copy_file pa, dest, o
 			end
 
 		end
 	end
 
 	# not rescurive copy
-	def copy_file src, dest
+	def copy_file src, dest, o
 		if src.e=='erb'
 			copy_erb_file src, dest.sub(/\.erb$/,'')
 		else
-			Pa.cp src, dest, special: true
+			Pa.cp src, dest, o.merge(special: true)
 		end
 	end
 
@@ -117,7 +117,7 @@ class Project
 		cli_config = options
 
 		config = home_config.merge(app_config).merge(cli_config)
-		config["project"] = name
+		config["project"] = project
 
 		config
 	end

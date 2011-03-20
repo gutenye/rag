@@ -17,6 +17,6 @@ a project helper, include create, develop, test, release
 	s.files = `git ls-files`.split("\n")
 	s.executables = %w(rag)
 
-	s.add_dependency 'tagen', '~>0.1.0'
+	s.add_dependency 'tagen', '~>0.2.0'
 	s.add_dependency 'thor', '~>0.14.0'
 end

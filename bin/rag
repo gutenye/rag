@@ -1,12 +1,20 @@
 #!/usr/bin/env ruby
 require "rag"
 
-# default plugin
+# default extension
 require "rag/new"
+require "rag/test"
+require "rag/doc"
+require "rag/gem"
 
-# Ragfile
+# load Ragfile
 if Pa.exists? "Ragfile"
 	load "Ragfile"
+end
+
+# load tasks/*.rag
+Pa.glob 'tasks/*.rag' do |pa|
+	load pa.path
 end
 
 Rag.start
