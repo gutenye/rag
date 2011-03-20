@@ -100,7 +100,7 @@ TODO
 
 Resources
 ---------
-* [hoe](https://github.com/seattlerb/hoe)
+* [Hoe](https://github.com/seattlerb/hoe): a rake/rubygems helper for project
 
 
 Copyright

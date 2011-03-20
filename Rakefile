@@ -1,8 +1,14 @@
 desc "build a gem file"
 task :release do
-	`rm *.gem &>/dev/null`
 	sh "gem build rag.gemspec"
 	sh "gem push *.gem"
+	sh "rm *.gem"
+end
+
+desc "install a gem file"
+task :install do
+	sh "gem build rag.gemspec"
+	sh "gem install *.gem"
 	sh "rm *.gem"
 end
 
