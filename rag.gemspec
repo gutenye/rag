@@ -4,9 +4,9 @@ require "version"
 Gem::Specification.new do |s|
 	s.name = "rag"
 	s.version = VERSION::IS
-	s.summary = "a project helper, include create, developing, testing, release"
+	s.summary = "a project helper, include create, developing, testing, release, add license"
 	s.description = <<-EOF
-a project helper, include create, develop, test, release
+a project helper, include create, develop, test, release, add license
 	EOF
 
 	s.author = "Guten"
