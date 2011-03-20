@@ -26,8 +26,6 @@ Usage
 Install
 ----------
 
-current still in developping, not relase a gem yet.
-
 	gem install rag
 
 
@@ -100,7 +98,7 @@ TODO
 
 Resources
 ---------
-* [hoe](https://github.com/seattlerb/hoe)
+* [Hoe](https://github.com/seattlerb/hoe): a rake/rubygems helper for project
 
 
 Copyright

@@ -1,35 +1,26 @@
 
-README
-------
+file layout
 
+	bin/
 
+	lib/
+	  \__project__/
+	    ...
+	  \__project__.rb
 
+	spec/
+    spec_helper.rb
+	  \__project__
+			...
+	\__project__.watchr
 
+	Gemfile
+	Ragfile
+	\__project__.gemspec
+	version.rb
 
-
-
-
-TODO 
-
-
-
-Rakefile
-lib
-lib/\__project__
-lib/\__project__.rb
-spec
-spec/\__project__.rb
-spec/spec_helper
-LICENSE.erb
-\__project__.watchr
-\__project__.gemspec
-Gemfile
-README.md.erb
-bin
-version.rb
-
-
-
+	LICENSE
+	README
 
 
 # vim: filetype=markdown
