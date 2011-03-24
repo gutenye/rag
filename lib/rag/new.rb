@@ -6,7 +6,12 @@ class Rag  < Thor
 	method_option "email", 			type: :string, desc: "author's email address"
 	method_option "template", 	type: :string, default: "default", banner: "NAME", desc: "which template to use"
 	method_option "name", 			type: :string, banner: "NAME", desc: "rag new . [--name hello] default from File.basename(cur_path)"
+	method_option "list", 			type: :boolean, desc: "list templates", aliaes: %w(-l)
 	def new name
+		if options.list?
+			Project.list_templates
+		end
+
 		check_first_time
 
 		Project.create name, options
@@ -16,14 +21,14 @@ class Rag  < Thor
 	def check_first_time
  		return unless first_time?
 
-		puts <<-EOF
-first time run rag. 
-  create ~/.ragrc config file with mode 600
-  exit
-
-please edit ~/.ragrc config file
-		EOF
-		Pa.cp Rc.pa.data+'/ragrc', Rc.pa.config
+		puts "first time run rag"
+		(Rc.pa.data+'/home_config').each do |src|
+			dest = '~/' + src.b.sub(/^_/, '.')
+			puts "[create] #{dest.short}"
+			Pa.cp src, dest
+		end
+		puts "exit."
+		puts "please edit ~/.ragrc config file, then run rag again"
 		exit
 	end
 

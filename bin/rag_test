@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
-#
-# for test only
+## for test only
 #
 
 require_relative "../lib/rag"
@@ -11,6 +10,7 @@ require_relative "../lib/rag/new"
 require_relative "../lib/rag/gem"
 require_relative "../lib/rag/doc"
 require_relative "../lib/rag/test"
+require_relative "../lib/rag/license"
 
 # Ragfile
 if Pa.exists? "Ragfile"

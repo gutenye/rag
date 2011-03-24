@@ -13,13 +13,15 @@ task :install do
 end
 
 desc "autotest with watchr"
-task :autotest do
+task :test do
 	sh "watchr rag.watchr"
 end
 
 desc "testing the libraray"
-task :test do
-	sh "rspec --color spec"
+namespace :test do
+	task :all do
+		sh "rspec spec"
+	end
 end
 
 desc "run yard server --reload"

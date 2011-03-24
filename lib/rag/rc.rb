@@ -4,8 +4,10 @@ class Rag
 		Rc.pa.config = Pa(ENV['HOME']).join('.ragrc')
 		Rc.pa.app = Pa(__FILE__).dir2.parent(2)
 			Rc.pa.app_config = Rc.pa.app.join('.ragrc')
-			Rc.pa.data = Rc.pa.app.join('datas')
-			Rc.pa.template = Rc.pa.app.join('template')
+			Rc.pa.data = Rc.pa.app.join('data')
+				Rc.pa.template = Rc.pa.data.join('template')
+				Rc.pa.header = Rc.pa.data.join('header')
+				Rc.pa.license = Rc.pa.data.join('license')
 
 	Rc.o = OpenOption.new
 		gemspec_file = Dir['*.gemspec'][0]

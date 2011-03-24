@@ -18,15 +18,11 @@ Usage
 	rag new # when first time run. create ~/.ragrc file, edit this file, than goto next step
 	rag new foo # create a foo project in current directory
 
+	rag new -l # list templates
+
 	rag -T # list tasks
 
 	rag release # build gem and push to Ruygems
-
-
-Install
-----------
-
-	gem install rag
 
 
 Features
@@ -35,6 +31,16 @@ Features
 * automatic add license header to source file when release (still in working)
 * easy to extend.
 * use thor as default task DSL.
+* with vim support
+
+
+modify license
+---------------
+
+* check: check if header is missing in some source file. 
+* add/update: add or update header to all source files.
+* remove: remove existing header.
+
 
 Configuration
 -------------
@@ -89,6 +95,10 @@ local variables in erb file are from ~/.ragrc and APP/.ragrc
 
 default template see {file:template/default.readme}
 
+Install
+----------
+
+	gem install rag
 
 TODO
 -----
@@ -99,6 +109,7 @@ TODO
 Resources
 ---------
 * [Hoe](https://github.com/seattlerb/hoe): a rake/rubygems helper for project
+* [maven-license-plugin](http://code.google.com/p/maven-license-plugin/): Maven 2 plugin that help you managing license headers in source files
 
 
 Copyright

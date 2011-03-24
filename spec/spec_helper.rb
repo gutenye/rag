@@ -1,5 +1,11 @@
-require "rag"
 require "tmpdir"
+
+require "rag"
+require "rag/new"
+require "rag/doc"
+require "rag/gem"
+require "rag/test"
+require "rag/license"
 
 ENV["HOME"] = Dir.mktmpdir
 

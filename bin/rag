@@ -6,6 +6,7 @@ require "rag/new"
 require "rag/test"
 require "rag/doc"
 require "rag/gem"
+require "rag/license"
 
 # load Ragfile
 if Pa.exists? "Ragfile"

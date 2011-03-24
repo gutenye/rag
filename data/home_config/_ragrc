@@ -1,0 +1,10 @@
+author: x
+email: x
+
+# license setting
+license: x
+year: 2010 
+author: guten
+organazition: Guten # for BSD License
+
+# vim: filetype=yaml

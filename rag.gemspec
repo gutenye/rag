@@ -3,7 +3,7 @@ require "version"
 
 Gem::Specification.new do |s|
 	s.name = "rag"
-	s.version = VERSION::IS
+	s.version = Rag::VERSION::IS
 	s.summary = "a project helper, include create, developing, testing, release, add license"
 	s.description = <<-EOF
 a project helper, include create, develop, test, release, add license

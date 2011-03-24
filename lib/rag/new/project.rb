@@ -22,6 +22,20 @@ class Project
 		def create name, o={}
 			Project.new(name, o).create
 		end
+
+		# find templates
+		def templates
+			templates = []
+			templates << Rc.pa.template.ls - %w(test)
+			home_template_pa = Pa('~/.rag/tempalte' )
+			templates << home_template_pa.ls if home_tempate_pa.exists?
+		end
+
+		# call by `rag new -l'
+		def list_templates
+			puts self.templates.join('\n')
+		end
+
 	end
 	extend ClassMethods
 
