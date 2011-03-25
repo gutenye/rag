@@ -1,10 +1,8 @@
-author: x
-email: x
+author: XX
+email: XX
+license: XX
 
-# license setting
-license: x
-year: 2010 
-author: guten
-organazition: Guten # for BSD License
+github:
+  username: XX
 
 # vim: filetype=yaml

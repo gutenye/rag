@@ -133,7 +133,8 @@ class Project
 		config = home_config.merge(app_config).merge(cli_config)
 		config["project"] = project
 
-		config
+		o = OpenOption.new(config)
+		o
 	end
 
 
