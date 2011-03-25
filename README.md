@@ -10,7 +10,7 @@ Rag, a project helper
 Overview
 --------
 
-a project helper, include create, develop, test, release, add license
+a project helper, include create, develop, test, release.
 
 Usage
 -----
@@ -28,19 +28,9 @@ Usage
 Features
 --------
 
-* automatic add license header to source file when release (still in working)
 * easy to extend.
 * use thor as default task DSL.
-* with vim support
-
-
-modify license
----------------
-
-* check: check if header is missing in some source file. 
-* add/update: add or update header to all source files.
-* remove: remove existing header.
-
+* with vim support. see resources 
 
 Configuration
 -------------
@@ -100,16 +90,11 @@ Install
 
 	gem install rag
 
-TODO
------
-
-* add license task support
-
-
 Resources
 ---------
+
+* [gem.vim](https://github.com/GutenLinux/gem.vim): a project helper for ruby gem/library development
 * [Hoe](https://github.com/seattlerb/hoe): a rake/rubygems helper for project
-* [maven-license-plugin](http://code.google.com/p/maven-license-plugin/): Maven 2 plugin that help you managing license headers in source files
 
 
 Copyright
