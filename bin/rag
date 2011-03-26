@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
-require "rag"
+require_relative "../lib/rag"
 
-# default extension
-require "rag/new"
-require "rag/test"
-require "rag/doc"
-require "rag/gem"
+# default plugin
+require_relative "../lib/rag/new"
+require_relative "../lib/rag/gem"
+require_relative "../lib/rag/doc"
+require_relative "../lib/rag/test"
 
 # load Ragfile
 if Pa.exists? "Ragfile"

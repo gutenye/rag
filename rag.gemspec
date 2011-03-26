@@ -16,7 +16,7 @@ a project helper, include create, develop, test, release
 	s.rubyforge_project = "xx"
 
 	s.files = `git ls-files`.split("\n")
-	s.executables = %w(rag rag_test)
+	s.executables = %w(rag)
 
 	s.add_bundler_dependencies
 end
