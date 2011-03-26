@@ -5,9 +5,9 @@ require "rag/new"
 require "rag/doc"
 require "rag/gem"
 require "rag/test"
-require "rag/license"
 
 ENV["HOME"] = Dir.mktmpdir
+Pa.cp Rag::Rc.pa.home_config+'/_ragrc', Pa(ENV["HOME"]).join('.ragrc')
 
 class Rag
 	Rc.pa.config = Pa(ENV['HOME']).join('.ragrc')

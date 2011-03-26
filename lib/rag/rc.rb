@@ -6,6 +6,7 @@ class Rag
 			Rc.pa.app_config = Rc.pa.app.join('.ragrc')
 			Rc.pa.data = Rc.pa.app.join('data')
 				Rc.pa.template = Rc.pa.data.join('template')
+				Rc.pa.home_config = Rc.pa.data.join('home_config')
 				Rc.pa.header = Rc.pa.data.join('header')
 				Rc.pa.license = Rc.pa.data.join('license')
 

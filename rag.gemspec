@@ -1,12 +1,13 @@
 $: << "."
 require "version"
+require "bundler"
 
 Gem::Specification.new do |s|
 	s.name = "rag"
 	s.version = Rag::VERSION::IS
-	s.summary = "a project helper, include create, developing, testing, release, add license"
+	s.summary = "a project helper, include create, developing, testing, release"
 	s.description = <<-EOF
-a project helper, include create, develop, test, release, add license
+a project helper, include create, develop, test, release
 	EOF
 
 	s.author = "Guten"
@@ -15,8 +16,7 @@ a project helper, include create, develop, test, release, add license
 	s.rubyforge_project = "xx"
 
 	s.files = `git ls-files`.split("\n")
-	s.executables = %w(rag)
+	s.executables = %w(rag rag_test)
 
-	s.add_dependency 'tagen', '~>0.2.0'
-	s.add_dependency 'thor', '~>0.14.0'
+	s.add_bundler_dependencies
 end
