@@ -85,6 +85,14 @@ local variables in erb file are from ~/.ragrc and APP/.ragrc
 
 default template see {file:template/default.readme}
 
+Contributing
+-------------
+
+* report bugs/featues to issue tracker.
+* fork it and pull a request.
+* improve documentation.
+* feel free to post any ideas. 
+
 Install
 ----------
 
