@@ -1,6 +1,5 @@
 require "bundler/setup"
-require "thor"
-require "tagen/core"
+Bundler.require :default
 
 class Rag < Thor
 end

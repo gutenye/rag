@@ -43,7 +43,7 @@ class Project
 	def initialize name, o={}
 		@name = name
 		@options = o
-		@project = name=="." ? (o["name"] || Pa.pwd2.base) : name
+		@project = o["name"] ? o["name"] : (name=="." ? Pa.pwd2.base : name)
 		@dest = Pa(@name)
 	end
 
