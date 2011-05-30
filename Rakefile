@@ -29,6 +29,11 @@ task :doc do
 	sh "yard server --reload"
 end
 
+desc "clean up"
+task :clean do
+	`rm *.gem`
+end
+
 def sh cmd
 	puts cmd
 	system cmd
