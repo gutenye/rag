@@ -27,7 +27,7 @@ class Project
 		def templates
 			templates = []
 			templates << Rc.pa.template.ls - %w(test)
-			home_template_pa = Pa('~/.rag/tempalte' )
+			home_template_pa = Pa('~/.rag/template' )
 			templates << home_template_pa.ls if home_tempate_pa.exists?
 		end
 

@@ -1,8 +1,9 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (3.0.5)
+    activesupport (3.0.8)
     diff-lcs (1.1.2)
+    pa (1.0.0)
     pd (1.0.1)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
@@ -12,7 +13,7 @@ GEM
     rspec-expectations (2.5.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.5.0)
-    tagen (0.2.5)
+    tagen (1.0.2)
       activesupport
       pd
     thor (0.14.6)
@@ -23,8 +24,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  pa (~> 1.0.0)
   rspec
-  tagen (~> 0.2.0)
+  tagen (~> 1.0.0)
   thor (~> 0.14.0)
   watchr
   yard

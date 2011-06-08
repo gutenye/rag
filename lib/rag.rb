@@ -1,4 +1,5 @@
 require "tagen/core"
+require "pa"
 require "thor"
 
 class Rag < Thor
