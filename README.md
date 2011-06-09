@@ -12,6 +12,8 @@ Overview
 
 a project helper, include create, develop, test, release.
 
+depends Gemfile.
+
 Usage
 -----
 

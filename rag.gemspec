@@ -7,7 +7,9 @@ Gem::Specification.new do |s|
 	s.version = Rag::VERSION::IS
 	s.summary = "a project helper, include create, developing, testing, release"
 	s.description = <<-EOF
-a project helper, include create, develop, test, release
+a project helper, include create, develop, test, release.  
+INSTALL: gem install --no-wrappers rag.  
+UPDATE: gem update --no-wrappers rag.
 	EOF
 
 	s.author = "Guten"
