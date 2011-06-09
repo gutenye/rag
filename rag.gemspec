@@ -1,6 +1,5 @@
 $: << "."
 require "version"
-require "bundler"
 
 Gem::Specification.new do |s|
 	s.name = "rag"
@@ -20,5 +19,7 @@ UPDATE: gem update --no-wrappers rag.
 	s.files = `git ls-files`.split("\n")
 	s.executables = %w(rag)
 
-	s.add_bundler_dependencies
+	s.add_dependency 'tagen', '~>1.0.0'
+	s.add_dependency 'pa', '~>1.0.0'
+	s.add_dependency 'thor', '~>0.14.0'
 end

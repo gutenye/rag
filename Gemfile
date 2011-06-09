@@ -1,6 +1,6 @@
 source :rubygems
 
-#gem 'tagen', :git => 'file:///home/guten/dev/rb/tagen', :require => 'tagen/core'
+#gem 'tagen', :path => '/home/guten/dev/rb/tagen', :require => 'tagen/core'
 gem 'tagen', '~>1.0.0', :require => 'tagen/core'
 gem 'pa', '~>1.0.0'
 gem 'thor', '~>0.14.0'

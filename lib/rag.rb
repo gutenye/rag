@@ -1,8 +1,6 @@
-#require "tagen/core"
-#require "pa"
-#require "thor"
-require "bundler/setup"
-Bundler.require
+require "tagen/core"
+require "pa"
+require "thor"
 
 class Rag < Thor
 end
