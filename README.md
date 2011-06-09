@@ -98,7 +98,13 @@ Contributing
 Install
 ----------
 
+	gem install --no-wrappers rag
+	gem update --no-wrappers rag
+
+or you can write `gem: --no-wrappers` into ~/.gemrc file, then
+
 	gem install rag
+	gem update rag
 
 Resources
 ---------
