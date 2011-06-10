@@ -9,8 +9,9 @@ class Rag < Thor
 
 	desc "install", "install this gem to your system"
 	def install
+		sudo = Process.uid == 0 ? "" : "sudo"
 		system "gem build #{Rc.o.project}.gemspec", :verbose
-		system "gem install #{Rc.o.project}-#{Rc.o.version}.gem", :verbose
+		system "#{sudo} gem install #{Rc.o.project}-#{Rc.o.version}.gem", :verbose
 		Pa.rm "#{Rc.o.project}-#{Rc.o.version}.gem", verbose: true
 	end
 
