@@ -1,11 +1,11 @@
 Rag, a project helper
 =====================
 
-**Homepage**: [https://github.com/GutenLinux/rag](https://github.com/GutenLinux/rag) <br/>
+**Homepage**: [https://github.com/GutenYe/rag](https://github.com/GutenYe/rag) <br/>
 **Author**:	Guten <br/>
 **License**: MIT-LICENSE <br/>
 **Documentation**: [http://rubydoc.info/gems/rag/frames](http://rubydoc.info/gems/rag/frames) <br/>
-**Issue Tracker**: [https://github.com/GutenLinux/rag/issues](https://github.com/GutenLinux/rag/issues) <br/>
+**Issue Tracker**: [https://github.com/GutenYe/rag/issues](https://github.com/GutenYe/rag/issues) <br/>
 
 Overview
 --------
@@ -109,7 +109,7 @@ or you can write `gem: --no-wrappers` into ~/.gemrc file, then
 Resources
 ---------
 
-* [gem.vim](https://github.com/GutenLinux/gem.vim): a project helper for ruby gem/library development
+* [gem.vim](https://github.com/GutenYe/gem.vim): a project helper for ruby gem/library development
 * [Hoe](https://github.com/seattlerb/hoe): a rake/rubygems helper for project
 
 

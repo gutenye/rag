@@ -13,7 +13,7 @@ UPDATE: gem update --no-wrappers rag.
 
 	s.author = "Guten"
 	s.email = "ywzhaifei@gmail.com"
-	s.homepage = "http://github.com/GutenLinux/rag"
+	s.homepage = "http://github.com/GutenYe/rag"
 	s.rubyforge_project = "xx"
 
 	s.files = `git ls-files`.split("\n")
