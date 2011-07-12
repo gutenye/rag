@@ -67,8 +67,18 @@ class Project
 		end
 	end
 
+	def template_path
+		path1 = File.join(ENV["HOME"], ".rag/template", options[:template])
+		return path1 if File.exists?(path1)
+
+		path2 = Rc.pa.template.join(options[:template]).p
+		return path2 if File.exists?(path2)
+
+		raise Error, "can't find template -- #{options[:template]}"
+	end
+
 	def copy_files o={}
-		Pa.each_r Rc.pa.template.join(options[:template]) do |pa, relative, e|
+		Pa.each_r template_path  do |pa, relative, e|
 			# skip *~
 			next if pa.b =~ /~$/
 
