@@ -1,9 +1,9 @@
 module <%=project.capitalize%>
-	module VERSION
-		MAJOR = 0
-		MINOR = 1
-		PATCH = 0
-
-		IS = [MAJOR, MINOR, PATCH].join(".") 
-	end
+  module VERSION
+    MAJOR = 0
+    MINOR = 1
+    PATCH = 0
+    PRE   = '' # beta rc1
+    IS    = [MAJOR, MINOR, PATCH].join(".") + PRE
+  end
 end
