@@ -67,7 +67,7 @@ in Ragfile
 
 	require 'rag/foo'
 
-avaliable variable for writing extension. they are read from .gemspec file
+available variable for writing extension. they are read from .gemspec file
 
 	Rc.o.project  # project name
 	Rc.o.version
