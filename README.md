@@ -1,18 +1,17 @@
 Rag, a project helper
 =====================
 
-**Homepage**: [https://github.com/GutenYe/rag](https://github.com/GutenYe/rag) <br/>
-**Author**:	Guten <br/>
-**License**: MIT-LICENSE <br/>
-**Documentation**: [http://rubydoc.info/gems/rag/frames](http://rubydoc.info/gems/rag/frames) <br/>
-**Issue Tracker**: [https://github.com/GutenYe/rag/issues](https://github.com/GutenYe/rag/issues) <br/>
+| Homepage:      |  https://github.com/GutenYe/rag       |
+|----------------|---------------------------------------|
+| Author:	       | Guten                                 |
+| License:       | MIT-LICENSE                           |
+| Documentation: | http://rubydoc.info/gems/rag/frames   |
+| Issue Tracker: | https://github.com/GutenYe/rag/issues |
 
 Overview
 --------
 
-a project helper, include create, develop, test, release.
-
-depends Gemfile.
+a project helper, include create, develop, test and release.
 
 Usage
 -----
@@ -103,7 +102,7 @@ Contributing
 Contributors
 ------------
 
-* [contributors](https://github.com/<%=github.username%>/<%=project%>/contributors)
+* [contributors](https://github.com/GutenYe/rag/contributors)
 
 
 Resources
