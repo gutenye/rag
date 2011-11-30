@@ -89,8 +89,7 @@ default template see {file:template/default.readme}
 Install
 ----------
 
-	gem install --no-wrappers rag
-	gem update --no-wrappers rag
+	gem install rag
 
 Contributing
 -------------

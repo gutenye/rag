@@ -1,14 +1,12 @@
-$: << "."
-require "version"
+$: << File.expand_path("../lib", __FILE__)
+require "rag/version"
 
 Gem::Specification.new do |s|
 	s.name = "rag"
-	s.version = Rag::VERSION::IS
-	s.summary = "a project helper, include create, developing, testing, release"
+	s.version = Rag::VERSION
+	s.summary = "A project helper, include create, developing, testing, release"
 	s.description = <<-EOF
-a project helper, include create, develop, test, release.  
-INSTALL: gem install --no-wrappers rag.  
-UPDATE: gem update --no-wrappers rag.
+A project helper, include create, develop, test, release helper.  
 	EOF
 
 	s.author = "Guten"
@@ -19,7 +17,6 @@ UPDATE: gem update --no-wrappers rag.
 	s.files = `git ls-files`.split("\n")
 	s.executables = %w(rag)
 
-	s.add_dependency 'tagen', '~>1.0.0'
-	s.add_dependency 'pa', '~>1.0.0'
-	s.add_dependency 'thor', '~>0.14.0'
+	s.add_dependency "pa"
+	s.add_dependency "thor"
 end
