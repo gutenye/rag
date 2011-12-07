@@ -1,15 +1,7 @@
-require "tmpdir"
+require 'rag'
 
-require "rag"
-require "rag/new"
-require "rag/doc"
-require "rag/gem"
-require "rag/test"
+$spec_dir = Pa(__FILE__).dir
 
-ENV["HOME"] = Dir.mktmpdir
-Pa.cp Rag::Rc.pa.home_config+'/_ragrc', Pa(ENV["HOME"]).join('.ragrc')
+ENV['HOME'] = $spec_dir.join2('data')
 
-class Rag
-	Rc.pa.config = Pa(ENV['HOME']).join('.ragrc')
-	Rc.pa.app_config = Pa(__FILE__).dirname.join('.ragrc')
-end
+Rag::Rc = Optimism.require "#{$spec_dir}/data/systemrc", "#{$spec_dir}/data/homerc"

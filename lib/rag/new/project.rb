@@ -64,7 +64,7 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
     end
 
     def template_path
-      pa1 = Rc.p.home.join("template, options[:template]")
+      pa1 = Rc.p.home.join(options[:template])
       return pa1.p if pa1.exists?
 
       pa2 = Rc.p.data.join("template", options[:template])
@@ -74,9 +74,9 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
     end
 
     def copy_files(o={})
-      Pa.each_r template_path  do |pa, relative, e|
+      Pa.each_r template_path do |pa, relative, e|
         # skip *~
-        next if pa.b =~ /~$/
+        next if pa.fn2 =~ /~$/
 
         # convert __project__ to @name
         dest = @dest.join(relative.gsub(/__project__/, project))
@@ -129,7 +129,7 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
     end
 
     def get_erb_config
-      config = Optimism.require(%w[Rc.p.apprc, Rc.p.homerc]) + Optimism[options]
+      config = Optimism.require(Rc.p.apprc.p, Rc.p.homerc.p) + Optimism[options]
       config["project"] = project
 
       config._data

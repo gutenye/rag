@@ -4,14 +4,3 @@ p:
   homerc = Pa.join(ENV["HOME"], ".ragrc")
   apprc = Pa(".ragrc")
   data = root.join("data")
-  
-o:
-  gemspec_file = Dir["*.gemspec"][0]
-  if gemspec_file
-    gemspec = Gem::Specification.load gemspec_file
-    Rc.o.project = gemspec.name
-    Rc.o.version = gemspec.version
-  end
-
-
-

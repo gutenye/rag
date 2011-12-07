@@ -23,7 +23,7 @@ private
  		return unless first_time?
 
 		puts "first time run rag"
-		(Rc.p.data.join("home_config")).each do |src|
+		Rc.p.data.join("home_config").each do |src|
 			dest = '~/' + src.b.sub(/^_/, '.')
 			puts "[create] #{dest.short}"
 			Pa.cp src, dest

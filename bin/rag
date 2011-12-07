@@ -12,4 +12,15 @@ Pa.glob("tasks/*.rag") { |pa|
 	load pa.path
 }
 
-Rag.start
+begin
+  Rag.start
+rescue Rag::RagError => e
+  Rag.ui.error e.message
+  Rag.ui.debug e.backtrace.join("\n")
+  exit 1
+rescue Interrupt => e
+  Rag.ui.error "\nQuitting..."
+  Rag.ui.debug e.backtrace.join("\n")
+  exit 1
+end
+

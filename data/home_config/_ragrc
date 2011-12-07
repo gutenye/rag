@@ -1,8 +1,8 @@
-author: XX
-email: XX
-license: XX
+author = 'XX'
+email = 'XX'
+license = 'XX'
 
 github:
-  username: XX
+  username = 'XX'
 
-# vim: filetype=yaml
+# vim: filetype=ruby
