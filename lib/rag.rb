@@ -23,7 +23,7 @@ class Rag < Thor
     attr_accessor :ui
 
 		def ui
-			@ui ||= UI.new
+			@ui ||= UI::Base.new
 		end
   end
 

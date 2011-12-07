@@ -1,6 +1,6 @@
-require "spec_helper"
-require "fileutils"
-require "tmpdir"
+require 'spec_helper'
+require 'fileutils'
+require 'tmpdir'
 
 describe Rag::Project do
 	before :all do
@@ -14,14 +14,9 @@ describe Rag::Project do
 		Dir.chdir(@curdir)
 	end
 
-	describe ".create" do
-		before :all do
-			Rag::Project.create "guten", template: 'default', author: 'Test', email: 'test@test.com'
+	describe '.create' do
+		it 'runs ok' do
+			Rag::Project.create 'default', 'guten', 'Guten', :author => 'Guten', :email => 'a@a.com'
 		end
-
-		it "runs ok" do
-		end
-
 	end
-
 end

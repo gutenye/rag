@@ -16,35 +16,23 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
 =end
   class Project
     class << self
-      def create(name, o={})
-        Project.new(name, o).create
-      end
-
-      # find templates
-      def templates
-        templates = []
-        templates << Rc.p.data.join("template").ls - %w(test)
-        home_template_pa = Rc.p.home.join("template")
-        templates << home_template_pa.ls if home_tempate_pa.exists?
-      end
-
-      # call by `rag new -l'
-      def list_templates
-        puts self.templates.join('\n')
+      def create(*args)
+        Project.new(*args).create
       end
     end
 
-    attr_reader :options, :name, :project
-    def initialize(name, o={})
+    attr_reader :options, :template_name, :name, :class_name, :project
+    def initialize(template_name, name, class_name, o={})
+      @template_name = template_name
       @name = name
       @options = o
-      @project = o["name"] ? o["name"] : (name=="." ? Rc.pwd.fname : name)
+      @project = o['name'] ? o['name'] : (name=='.' ? Rc.pwd.fname : name)
       @dest = Pa(@name)
     end
 
     def create
       create_project_directory
-      if name=="."
+      if name=='.'
         copy_files
       else
         copy_files :overwrite => true
@@ -53,7 +41,7 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
 
   private
     def create_project_directory
-      if @name=="."
+      if @name=='.'
         return
       elsif @dest.exists?
         puts "dest directory `#{@name}' already existing"
@@ -64,13 +52,10 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
     end
 
     def template_path
-      pa1 = Rc.p.home.join(options[:template])
+      pa1 = Rc.p.home.join(template_name)
       return pa1.p if pa1.exists?
 
-      pa2 = Rc.p.data.join("template", options[:template])
-      return pa2.p if pa2.exists?
-
-      raise Error, "can't find template -- #{options[:template]}"
+      raise Error, "can't find template -- #{template_name}"
     end
 
     def copy_files(o={})
@@ -88,14 +73,14 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
         if not o[:overwrite] and (dest.exists? or dest.sub(/\.erb$/, '').exists?)
           print "Overwrite #{path_msg}? [yna] "
           case $stdin.gets.rstrip
-          when "y"
+          when 'y'
             puts "[overwrite] #{path_msg}"
             copy_file pa, dest, o
-          when "a"
+          when 'a'
             puts "[overwrite] #{path_msg}"
             o[:overwrite] = true
             copy_file pa, dest, o
-          when "q"
+          when 'q'
             exit
           else
             puts "[skip] #{path_msg}"
@@ -115,7 +100,7 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
 
     # not rescurive copy
     def copy_file(src, dest, o)
-      if src.e=='erb'
+      if src.e == 'erb'
         copy_erb_file src, dest.sub(/\.erb$/,'')
       else
         Pa.cp src, dest, o.merge(special: true)
@@ -130,7 +115,9 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
 
     def get_erb_config
       config = Optimism.require(Rc.p.apprc.p, Rc.p.homerc.p) + Optimism[options]
-      config["project"] = project
+      config['project'] = project
+      config['klass'] = class_name
+      config['template'] = template_name
 
       config._data
     end
