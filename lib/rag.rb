@@ -1,23 +1,22 @@
 libdir = File.dirname(__FILE__)
 $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 
-ENV['BUNDLE_GEMFILE'] = File.expand_path('../../Gemfile', __FILE__)
-require 'bundler/setup'
+ENV["BUNDLE_GEMFILE"] = File.expand_path("../../Gemfile", __FILE__)
+require "bundler/setup"
 Bundler.require
-
 
 class Rag < Thor
   Error = Exception.new
   RagError = Exception.new
 
-  autoload :VERSION, 'rag/version'
-  autoload :Util, 'rag/util'
+  autoload :VERSION, "rag/version"
+  autoload :Util, "rag/util"
   Rc = Optimism.require "rag/rc", "~/.ragrc"
 
 	include Thor::Actions
 
-	class_option 'no-color', :type => :boolean, :banner => 'Disable colorization in output'
-	class_option 'verbose',  :type => :boolean, :banner => 'Enable verbose output mode', :aliases => '-V'
+	class_option "no-color", :type => :boolean, :banner => "Disable colorization in output"
+	class_option "verbose",  :type => :boolean, :banner => "Enable verbose output mode", :aliases => "-V"
 
   class << self
     attr_accessor :ui
@@ -29,14 +28,14 @@ class Rag < Thor
 
 	def initialize(*)
 		super
-		the_shell = (options['no-color'] ? Thor::Shell::Basic.new : shell)
+		the_shell = (options["no-color"] ? Thor::Shell::Basic.new : shell)
 		Rag.ui = UI::Shell.new(the_shell)
-		Rag.ui.debug! if options['verbose']
+		Rag.ui.debug! if options["verbose"]
 	end
 end
 
-require 'rag/ui'
-require 'rag/new'
-require 'rag/gem'
-require 'rag/test'
-require 'rag/doc'
+require "rag/ui"
+require "rag/new"
+require "rag/gem"
+require "rag/test"
+require "rag/doc"
