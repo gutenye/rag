@@ -15,25 +15,33 @@ class Rag < Thor
 
   Rc = Optimism.require "rag/rc", "~/.ragrc"
 
-	include Thor::Actions
+  include Thor::Actions
 
-	class_option "no-color", :type => :boolean, :banner => "Disable colorization in output"
-	class_option "verbose",  :type => :boolean, :banner => "Enable verbose output mode", :aliases => "-V"
+  class_option "no-color", :type => :boolean, :banner => "Disable colorization in output"
+  class_option "verbose",  :type => :boolean, :banner => "Enable verbose output mode", :aliases => "-V"
 
   class << self
     attr_accessor :ui
 
-		def ui
-			@ui ||= UI::Base.new
-		end
+    def ui
+      @ui ||= UI::Base.new
+    end
   end
 
-	def initialize(*)
-		super
-		the_shell = (options["no-color"] ? Thor::Shell::Basic.new : shell)
-		Rag.ui = UI::Shell.new(the_shell)
-		Rag.ui.debug! if options["verbose"]
-	end
+  def initialize(*)
+    super
+    the_shell = (options["no-color"] ? Thor::Shell::Basic.new : shell)
+    Rag.ui = UI::Shell.new(the_shell)
+    Rag.ui.debug! if options["verbose"]
+
+    # generate Rc.o
+    o = Rc.o = OpenOption.new
+    if gemspec_file=Dir["*.gemspec"][0]
+      gemspec = Gem::Specification.load(gemspec_file)
+      o.project = gemspec.name
+      o.version = gemspec.version
+    end
+  end
 end
 
 require "rag/new"
