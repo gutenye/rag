@@ -8,10 +8,14 @@ Rag, a project helper
 | Documentation: | http://rubydoc.info/gems/rag/frames   |
 | Issue Tracker: | https://github.com/GutenYe/rag/issues |
 
-Overview
+a project helper, include create, develop, test and release.
+
+Features
 --------
 
-a project helper, include create, develop, test and release.
+* easy to extend.
+* use thor as default task DSL.
+* with vim support. see resources 
 
 Usage
 -----
@@ -24,14 +28,6 @@ Usage
 	rag -T # list tasks
 
 	rag release # build gem and push to Ruygems
-
-
-Features
---------
-
-* easy to extend.
-* use thor as default task DSL.
-* with vim support. see resources 
 
 Configuration
 -------------
@@ -76,33 +72,33 @@ available variable for writing extension. they are read from .gemspec file
 Template
 --------
 
-from system-level: GEM(rag)/template and user-level: ~/.rag/template
+template path: ~/.rag/
 
-template/foo/a.erb
+~/.rag/foo/a.erb
 
 	<%=project%>
 
 local variables in erb file are from ~/.ragrc and APP/.ragrc
-
-default template see {file:template/default.readme}
 
 Install
 ----------
 
 	gem install rag
 
-Contributing
--------------
+Note on Patches/Pull Requests
+-----------------------------
 
-* Feel free to join the project and make contributions (by submitting a pull request)
-* Submit any bugs/features/ideas to github issue tracker
-* Coding Style Guide: https://gist.github.com/1105334
+1. Fork the project.
+2. Make your feature addition or bug fix.
+3. Add tests for it. This is important so I don't break it in a future version unintentionally.
+4. Commit, do not mess with rakefile, version, or history. (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+5. Send me a pull request. Bonus points for topic branches.
+6. Coding Style Guide: https://gist.github.com/1105334
 
 Contributors
 ------------
 
 * [contributors](https://github.com/GutenYe/rag/contributors)
-
 
 Resources
 ---------

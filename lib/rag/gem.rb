@@ -1,5 +1,4 @@
 class Rag < Thor
-
 	desc "release", "release this gem to RubyGems.org"
 	def release
 		system "gem build #{Rc.o.project}.gemspec", :verbose => true
@@ -19,5 +18,4 @@ class Rag < Thor
 	def build
 		system "gem build #{Rc.o.project}.gemspec", :verbose => true
 	end
-
 end

@@ -14,8 +14,8 @@ Signal.trap('QUIT') do
 	test "spec"
 end
 
-def test path
-	cmd = "rspec --color #{path}"
+def test(path)
+	cmd = "rspec #{path}"
 	puts cmd
 	system cmd
 end

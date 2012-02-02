@@ -6,11 +6,13 @@ require "bundler/setup"
 Bundler.require
 
 class Rag < Thor
-  Error = Exception.new
-  RagError = Exception.new
+  Error = Class.new Exception
+  RagError = Class.new Exception
 
   autoload :VERSION, "rag/version"
+  autoload :UI, "rag/ui"
   autoload :Util, "rag/util"
+
   Rc = Optimism.require "rag/rc", "~/.ragrc"
 
 	include Thor::Actions
@@ -34,7 +36,6 @@ class Rag < Thor
 	end
 end
 
-require "rag/ui"
 require "rag/new"
 require "rag/gem"
 require "rag/test"
