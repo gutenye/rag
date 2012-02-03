@@ -1,40 +1,43 @@
+sudo = Process.pid==0 ? "" : "sudo"
+
 desc "build a gem file"
 task :release do
-	sh "gem build rag.gemspec"
-	sh "gem push *.gem"
-	sh "rm *.gem"
+	run "gem build rag.gemspec"
+	run "gem push *.gem"
+  run "#{sudo} gem install *.gem"
+	run "rm *.gem"
 end
 
 desc "install a gem file"
 task :install do
-	sh "gem build rag.gemspec"
-	sh "gem install *.gem"
-	sh "rm *.gem"
+	run "gem build rag.gemspec"
+	run "#{sudo} gem install *.gem"
+	run "rm *.gem"
 end
 
 desc "autotest with watchr"
 task :test do
-	sh "watchr rag.watchr"
+	run "watchr rag.watchr"
 end
 
 desc "testing the libraray"
 namespace :test do
 	task :all do
-		sh "rspec spec"
+		run "rspec spec"
 	end
 end
 
 desc "run yard server --reload"
 task :doc do
-	sh "yard server --reload"
+	run "yard server --reload"
 end
 
 desc "clean up"
 task :clean do
-	`rm *.gem`
+	run "rm *.gem"
 end
 
-def sh cmd
+def run cmd
 	puts cmd
 	system cmd
 end
