@@ -1,9 +1,9 @@
-libdir = File.dirname(__FILE__)
-$LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
-
 ENV["BUNDLE_GEMFILE"] = File.expand_path("../../Gemfile", __FILE__)
 require "bundler/setup"
 Bundler.require
+
+libdir = File.dirname(__FILE__)
+$LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 
 class Rag < Thor
   Error = Class.new Exception
