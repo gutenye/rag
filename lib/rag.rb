@@ -1,9 +1,10 @@
-ENV["BUNDLE_GEMFILE"] = File.expand_path("../../Gemfile", __FILE__)
-require "bundler/setup"
-Bundler.require
-
 libdir = File.dirname(__FILE__)
 $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
+
+require "tagen/core"
+require "pa"
+require "optimism"
+require "thor"
 
 class Rag < Thor
   Error = Class.new Exception

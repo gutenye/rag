@@ -4,12 +4,12 @@ module Ragen
 
 		desc "default", "default", hide: true
 		def default
-			system "watchr #{Rag::Rc.o.project}.watchr", :verbose
+			system "watchr #{Rag::Rc.o.project}.watchr", :verbose => true
 		end
 
 		desc "test [all]", "auto test with watchr"
 		def all
-			system "rspec --color spec", :verbose
+			system "rspec --color spec", :verbose => true
 		end
 
 	end
