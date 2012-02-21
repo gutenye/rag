@@ -52,20 +52,20 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
     end
 
     def template_path
-      pa1 = Pa("#{Rc.p.home}/#{template}")
-      return pa1.p if pa1.exists?
+      p = Pa("#{Rc.p.home}/#{template}")
+      return p.p if p.exists?
 
       raise Error, "can't find template -- #{template}"
     end
 
     def copy_files(o={})
-      Pa.each_r template_path do |pa, relative, e|
+      Pa.each_r template_path do |pa, abs, rel|
         # skip *~
         next if pa.fn2 =~ /~$/
 
         # convert __project__ to options["name"]
-        dest = app_path.join(relative.gsub(/__project__/, options["name"]))
-        path_msg = relative.gsub(/__project__/, options["name"]).gsub(/\.erb$/,"")
+        dest = app_path.join(rel.gsub(/__project__/, options["name"]))
+        path_msg = rel.gsub(/__project__/, options["name"]).gsub(/\.erb$/,"")
 
         # skip directory not file
         next if dest.exists? and dest.directory? 

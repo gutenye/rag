@@ -18,7 +18,7 @@ describe Project do
 
 	describe ".create" do
 		it "runs ok" do
-			Project.create "default", "guten", "Guten", :author => "Guten", :email => "a@a.com"
+			Project.create "rb.app", "guten"
 		end
 	end
 end

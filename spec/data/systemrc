@@ -1,9 +1,0 @@
-p:
-  root = nil
-  home = Pa.join(ENV['HOME'], '_rag')
-  homerc = Pa.join(ENV['HOME'], '_ragrc')
-  apprc = $spec_dir.join('_apprc')
-  data = $spec_dir.join('data')
-
-
-# vim: filetype=ruby
