@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "tagen", "~>1.1.0", :require => "tagen/core"
+gem "tagen", "~>1.1.0"
 gem "pa", "~>1.2.0"
 gem "optimism", "~>3.1.0"
 gem "thor"

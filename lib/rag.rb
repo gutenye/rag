@@ -1,5 +1,4 @@
-libdir = File.dirname(__FILE__)
-$LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
+libdir = File.dirname(__FILE__); $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 
 require "tagen/core"
 require "pa"
@@ -7,13 +6,12 @@ require "optimism"
 require "thor"
 
 class Rag < Thor
-  Error = Class.new Exception
-  RagError = Class.new Exception
-
   autoload :VERSION, "rag/version"
   autoload :UI, "rag/ui"
   autoload :Util, "rag/util"
 
+  Error = Class.new Exception
+  RagError = Class.new Exception
   Rc = Optimism.require "rag/rc", "~/.ragrc"
 
   include Thor::Actions
