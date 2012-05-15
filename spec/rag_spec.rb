@@ -4,8 +4,12 @@ describe Rag do
   describe "#new" do
     it "works" do
       chdir $spec_tmp, :empty => true do
-        Rag.new.invoke(:new, ["ruby.app", "hello"])
-        File.read("hello/hello").should == "hello"
+        Rag.new.invoke(:new, ["ruby.app.bar", "myapp"])
+
+        File.read("myapp/hello").should == "hello"
+        Rc.template.should == "ruby"
+        Rc.exts.should == %w[app bar]
+        Rc.ext.should == "app" # main ext
       end
     end
   end

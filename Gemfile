@@ -3,7 +3,7 @@ source "http://ruby.taobao.org"
 
 gem "tagen", "~>1.1.0"
 gem "pd"
-gem "pa", "~>1.2.0"
+gem "pa", :path => "/home/guten/dev/one/pa"
 #gem "optimism", "~>3.1.0"
 gem "optimism", :path => "/home/guten/dev/one/optimism"
 gem "thor"

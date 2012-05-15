@@ -127,6 +127,8 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
   end
 
   class Template
+    Rc = Rag::Rc # used in hello.tt
+
     # @param [Hash] o options pass to initialize
     def self.render(source, o={}, &blk)
       scope = Template.new(o) 
@@ -139,13 +141,19 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
     # @param [Hash] o options
     # @option o [String] :source_root ("")
     def initialize(o={})
-      @source_root = o["source_root"] || ""
+      @source_root = o[:source_root] || ""
     end
 
+    # path absolute or relative.
     def render(path)
-      path = Pa.absolute?(path) ? path : Pa.join(source_root, path)
+      path = Pa(Pa.absolute?(path) ? path : Pa.join(source_root, path))
+      path = path.build(fname: (path.base[0]=="_" ? "" : "_")+path.base)
 
-      Tilt.new(path).render(self, locals)
+      Tilt::ERBTemplate.new(path.p).render(self, locals)
+    end
+
+    def have_ext(ext)
+      Rc.exts.include? ext
     end
 
     # for tilt
@@ -162,6 +170,20 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
       @template_name = template_name
       @app_path = app_path
       @options = o
+    end
+
+    no_tasks do
+
+      def project
+        Rc.project
+      end
+
+    end
+
+  private
+
+    def have_ext(ext)
+      Rc.exts.include? ext
     end
   end
 end
