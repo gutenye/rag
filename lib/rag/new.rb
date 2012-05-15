@@ -178,12 +178,24 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
         Rc.project
       end
 
-    end
+      def have_ext(ext)
+        Rc.exts.include? ext
+      end
 
-  private
+      # a shortcut for
+      #   directory2 "template", Rc.app_path
+      #   directory2 "template.daemon", Rc.app_path if have_ext("daemon")
+      #   ...
+      def copy_template(dir)
+        directory2 dir, Rc.app_path
 
-    def have_ext(ext)
-      Rc.exts.include? ext
+        Rc.exts.each {|ext|
+          newdir = "#{dir}.#{ext}"
+          if Pa.exists?(newdir)
+            directory2 newdir, Rc.app_path
+          end
+        }
+      end
     end
   end
 end
