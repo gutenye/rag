@@ -1,9 +1,12 @@
 require "spec_helper"
 require "fileutils"
 require "tmpdir"
+require "rag/new"
+require "rag/ext"
 
 Project = Rag::Project
 
+=begin
 describe Project do
 	before :all do
 		@curdir = Dir.pwd
@@ -22,12 +25,4 @@ describe Project do
 		end
 	end
 end
-
-describe Rag do
-	describe ".new" do
-		it "first time create ragrc in $HOME" do
-			#pd Rc.pa.config
-			#Rag::Rc.pa.config.should be_exists
-		end
-	end
-end
+=end

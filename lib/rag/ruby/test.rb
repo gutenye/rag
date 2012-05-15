@@ -2,14 +2,14 @@ module Ragen
 	class Test < Thor
 		default_task :default
 
-		desc "default", "default", hide: true
+		desc "default", "begin auto test", hide: true
 		def default
 			system "watchr #{Rag::Rc.o.project}.watchr", :verbose => true
 		end
 
-		desc "test [all]", "auto test with watchr"
+		desc "all", "test all"
 		def all
-			system "rspec --color spec", :verbose => true
+			system "bundle exec rspec --color spec", :verbose => true
 		end
 
 	end

@@ -1,6 +1,9 @@
 libdir = File.dirname(__FILE__); $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 
-require "tagen/core"
+#require "tagen/core"
+require "tagen/core/array/extract_options"
+require "active_support/core_ext/string/inflections"
+require "pd"
 require "pa"
 require "optimism"
 require "thor"
@@ -11,6 +14,7 @@ class Rag < Thor
   autoload :Util, "rag/util"
 
   Error = Class.new Exception
+  ENoTemplate = Class.new Error
   RagError = Class.new Exception
   Rc = Optimism.require "rag/rc", "~/.ragrc"
 
@@ -27,23 +31,44 @@ class Rag < Thor
     end
   end
 
-  def initialize(*)
-    super
-    the_shell = (options["no-color"] ? Thor::Shell::Basic.new : shell)
-    Rag.ui = UI::Shell.new(the_shell)
-    Rag.ui.debug! if options["verbose"]
-
-    # generate Rc.o
-    o = Rc.o = OpenOption.new
-    if gemspec_file=Dir["*.gemspec"][0]
-      gemspec = Gem::Specification.load(gemspec_file)
-      o.project = gemspec.name
-      o.version = gemspec.version
+  chainable = Module.new do
+    def initialize(*)
+      super
+      the_shell = (options["no-color"] ? Thor::Shell::Basic.new : shell)
+      Rag.ui = UI::Shell.new(the_shell)
+      Rag.ui.debug! if options["verbose"]
     end
   end
+  include chainable
 end
 
-require "rag/new"
-require "rag/gem"
-require "rag/test"
-require "rag/doc"
+# new
+class Rag
+	desc "new <template_name> <app_path>", "create a new project"
+  method_option "name", :aliases => "-n", :type => :string, :banner => "NAME", :desc => "new project name"
+  method_option "klass", :aliases => "-k", :type => :string, :banner => "CLASS_NAME", :desc => "new class name"
+	def new(template_name, app_path)
+    o = options.dup
+    template_name = template_name.dup
+    app_path = Pa(app_path.dup)
+    require "rag/new"
+
+    root = Pa("#{Rc.p.home}/#{template_name}")
+    raise ENoTemplate, "can't find '#{template_name}' at #{Rc.p.home}" unless root.exists?
+
+    o["name"] ||= Pa.absolute(app_path).fname 
+    o["klass"] ||= o["name"].classify
+    Rc << {
+      template_name: template_name,
+      app_path: app_path,
+      project: o["name"],
+      klass: o["klass"],
+    }
+
+    source = File.read("#{root}/Buildfile")
+    DSL.source_root root.p
+    dsl = DSL.new(template_name, app_path, o)
+    dsl.destination_root = ""
+    dsl.instance_eval source
+	end
+end

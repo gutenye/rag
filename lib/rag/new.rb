@@ -1,4 +1,7 @@
-class Rag # ::Project
+require "tilt"
+require "rag/ext"
+
+class Rag # Project Template DSL
 =begin
 
 == ERB support variables
@@ -122,35 +125,43 @@ you can use arbitrary name in .ragrc, then you can use then in template file.
       config._data
     end
   end
-end
 
-class Rag < Thor
-	desc "new <template> <app_path>", "create a new project"
-  method_option "name", :aliases => "-n", :type => :string, :banner => "NAME", :desc => "another name"
-  method_option "class_name", :aliases => "-c", :type => :string, :banner => "CLASS_NAME", :desc => "another class name"
-	def new(template, app_path)
-		check_first_time!
+  class Template
+    # @param [Hash] o options pass to initialize
+    def self.render(source, o={}, &blk)
+      scope = Template.new(o) 
 
-		Project.create template.dup, app_path.dup, options.dup
-	end
+      Tilt["erb"].new(source).render(scope, scope.locals, &blk)
+    end
 
-private
-	def check_first_time!
- 		return unless first_time?
+    attr_reader :source_root
 
-		puts "first time run rag"
-    Pa.each("#{Rc.p.data}/home_config") { |src|
-			dest = "~/" + src.b.sub(/^_/, ".")
-			puts "[create] #{dest.short}"
-			Pa.cp src, dest
-    }
+    # @param [Hash] o options
+    # @option o [String] :source_root ("")
+    def initialize(o={})
+      @source_root = o["source_root"] || ""
+    end
 
-		puts "exit."
-		puts "please edit ~/.ragrc config file, then run rag again"
-		exit
-	end
+    def render(path)
+      path = Pa.absolute?(path) ? path : Pa.join(source_root, path)
 
-	def first_time?
-		Rc.p.homerc.exists? ? false : true
-	end
+      Tilt.new(path).render(self, locals)
+    end
+
+    # for tilt
+    def locals
+      Rc._to_hash
+    end
+  end
+
+  class DSL < Thor
+    include Thor::Actions
+    attr_reader :options, :template_name, :app_path
+
+    def initialize(template_name, app_path, o={})
+      @template_name = template_name
+      @app_path = app_path
+      @options = o
+    end
+  end
 end

@@ -1,4 +1,4 @@
-class Rag < Thor
+class Rag
 	desc "release", "release this gem to RubyGems.org"
 	def release
 		sudo = Process.uid == 0 ? "" : "sudo"

@@ -1,15 +1,29 @@
+require "bundler/setup"
+require "stringio"
+require "fileutils"
+require "pd"
 require "rag"
 
 $spec_dir = File.expand_path("..", __FILE__)
 $spec_data = File.expand_path("../data", __FILE__)
+$spec_tmp = File.expand_path("../tmp", __FILE__)
 
-Rag::Rc._merge! Optimism <<EOF
+
+Rc = Rag::Rc
+Rc._merge! <<EOF
 p:
   root = nil
-  home = Pa("#{$spec_data}/_rag")
-  homerc = Pa("#{$spec_data}/_ragrc")
-  apprc = Pa("#{$spec_data}/_apprc")
+  home = Pa("#{$spec_data}/home")
+  homerc = Pa("#{$spec_data}/ragrc")
+  apprc = Pa("#{$spec_data}/apprc")
   data = nil
+
+author = "Test"
+email = "test@test.com"
+license = "TEST-LICENSE"
+
+github:
+  username = "TestYe"
 EOF
 
 RSpec.configure do |config|
@@ -25,8 +39,20 @@ RSpec.configure do |config|
 
     result
   end
-
   alias :silence :capture
+
+  def chdir(dir, o={}, &blk)
+    begin
+      cwd = Dir.pwd
+      Dir.chdir(dir)
+    ensure
+      Dir.chdir(cwd)
+      if o[:empty]
+        FileUtils.rm_r Dir.entries(dir).tap{|v| v.delete("."); v.delete("..")}
+      end
+    end
+  end
+
 end
 
 module Kernel 
@@ -50,6 +76,5 @@ private
     end
   end
 end
-
 
 # vim: ft=ruby

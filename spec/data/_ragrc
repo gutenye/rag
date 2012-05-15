@@ -1,8 +1,0 @@
-author = "Test"
-email = "test@test.com"
-license = "TEST-LICENSE"
-
-github:
-  username = "TestYe"
-
-# vim: ft=ruby
