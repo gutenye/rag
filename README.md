@@ -9,7 +9,7 @@
 
 a project helper, include create, develop, test and release.
 
-Note: not ruby 1.8.
+Note: not support ruby 1.8, jruby, rubinius
 
 Features
 --------
