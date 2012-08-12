@@ -1,11 +1,10 @@
-#source :rubygems
-source "http://ruby.taobao.org"
+source :rubygems
+#source "http://ruby.taobao.org"
 
 gem "tagen", "~>1.1.0"
 gem "pd"
-gem "pa", :path => "/home/guten/dev/one/pa"
-#gem "optimism", "~>3.1.0"
-gem "optimism", :path => "/home/guten/dev/one/optimism"
+gem "pa", "~>1.3.0"
+gem "optimism", "~>3.2.0"
 gem "thor"
 gem "tilt"
 
