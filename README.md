@@ -1,5 +1,4 @@
-Rag, a project helper
-=====================
+# Rag, a project helper [![Build Status](https://secure.travis-ci.org/GutenYe/rag.png)](http://travis-ci.org/GutenYe/rag)
 
 | Homepage:      |  https://github.com/GutenYe/rag       |
 |----------------|---------------------------------------|
@@ -9,6 +8,8 @@ Rag, a project helper
 | Issue Tracker: | https://github.com/GutenYe/rag/issues |
 
 a project helper, include create, develop, test and release.
+
+Note: not ruby 1.8.
 
 Features
 --------
