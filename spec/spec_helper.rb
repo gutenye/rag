@@ -8,7 +8,6 @@ $spec_dir = File.expand_path("..", __FILE__)
 $spec_data = File.expand_path("../data", __FILE__)
 $spec_tmp = File.expand_path("../tmp", __FILE__)
 
-
 Rc = Rag::Rc
 Rc._merge! <<EOF
 p:
@@ -48,7 +47,7 @@ RSpec.configure do |config|
     ensure
       Dir.chdir(cwd)
       if o[:empty]
-        FileUtils.rm_r Dir.entries(dir).tap{|v| v.delete("."); v.delete("..")}
+        FileUtils.rm_r Dir.entries(dir).tap{|v| v.delete("."); v.delete(".."); v.delete(".gitkeep")}
       end
     end
   end
