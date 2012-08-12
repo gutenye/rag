@@ -9,8 +9,6 @@
 
 a project helper, include create, develop, test and release.
 
-Note: not support ruby 1.8, jruby, rubinius
-
 Features
 --------
 
@@ -107,6 +105,10 @@ Resources
 * [gem.vim](https://github.com/GutenYe/gem.vim): a project helper for ruby gem/library development
 * [Hoe](https://github.com/seattlerb/hoe): a rake/rubygems helper for project
 
+Requirements
+------------
+
+* ruby 1.9.3
 
 Copyright
 ---------
