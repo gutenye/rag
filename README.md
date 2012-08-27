@@ -1,4 +1,4 @@
-# Rag, a project helper [![Build Status](https://secure.travis-ci.org/GutenYe/rag.png)](http://travis-ci.org/GutenYe/rag)
+# Rag, a modular project helper [![Build Status](https://secure.travis-ci.org/GutenYe/rag.png)](http://travis-ci.org/GutenYe/rag)
 
 | Homepage:      |  https://github.com/GutenYe/rag       |
 |----------------|---------------------------------------|
@@ -12,7 +12,7 @@ a project helper, include create, develop, test and release.
 Features
 --------
 
-* easy to extend.
+* modularity: easy to create a plugin.
 * use thor as default task DSL.
 * with vim support. see resources 
 
@@ -38,7 +38,7 @@ there are two places you can set up settings, ~/.ragrc, APP/.ragrc
 	author: foo
 	email: foo@bar.com
 
-Extension
+Extension & Plugin
 ---------
  
 you can write your own task in Ragfile, APP/tasks/\*.rag
