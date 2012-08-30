@@ -1,11 +1,13 @@
 # Rag, a modular project helper [![Build Status](https://secure.travis-ci.org/GutenYe/rag.png)](http://travis-ci.org/GutenYe/rag)
 
-| Homepage:      |  https://github.com/GutenYe/rag       |
+|                |                                       |
 |----------------|---------------------------------------|
+| Homepage:      | https://github.com/GutenYe/rag        |
 | Author:	       | Guten                                 |
 | License:       | MIT-LICENSE                           |
 | Documentation: | http://rubydoc.info/gems/rag/frames   |
 | Issue Tracker: | https://github.com/GutenYe/rag/issues |
+| Ruby Versions: | Ruby 1.9.3, Rubinius                  |
 
 a project helper, include create, develop, test and release.
 
@@ -105,17 +107,12 @@ Resources
 * [gem.vim](https://github.com/GutenYe/gem.vim): a project helper for ruby gem/library development
 * [Hoe](https://github.com/seattlerb/hoe): a rake/rubygems helper for project
 
-Requirements
-------------
-
-* ruby 1.9.3
-
 Copyright
 ---------
 
 (the MIT License)
 
-Copyright (c) 2011 Guten
+Copyright (c) 2011-2012 Guten
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

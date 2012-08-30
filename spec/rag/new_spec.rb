@@ -1,5 +1,4 @@
 require "spec_helper"
-require "fileutils"
 require "tmpdir"
 require "rag/new"
 require "rag/ext"

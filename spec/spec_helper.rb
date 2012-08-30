@@ -1,12 +1,10 @@
-require "bundler/setup"
-require "stringio"
-require "fileutils"
 require "pd"
 require "rag"
+require "fileutils"
 
 $spec_dir = File.expand_path("..", __FILE__)
-$spec_data = File.expand_path("../data", __FILE__)
-$spec_tmp = File.expand_path("../tmp", __FILE__)
+$spec_data = File.join($spec_dir, "data")
+$spec_tmp = File.join($spec_dir, "tmp")
 
 Rc = Rag::Rc
 Rc._merge! <<EOF
@@ -26,7 +24,8 @@ github:
 EOF
 
 RSpec.configure do |config|
-  def capture(stream)
+  def capture(stream=:stdout)
+		require "stringio"
     begin
       stream = stream.to_s
       eval "$#{stream} = StringIO.new"
@@ -38,6 +37,7 @@ RSpec.configure do |config|
 
     result
   end
+
   alias :silence :capture
 
   def chdir(dir, o={}, &blk)
@@ -51,29 +51,27 @@ RSpec.configure do |config|
       end
     end
   end
-
 end
 
-module Kernel 
-private
+module RSpec
+  module Core
+    module DSL
+      def xdescribe(*args, &blk)
+        describe *args do
+          pending 
+        end
+      end
 
-  def xdescribe(*args, &blk)
-    describe *args do
-      pending "xxxxxxxxx"
-    end
-  end
-
-  def xcontext(*args, &blk)
-    context *args do
-      pending "xxxxxxxxx"
-    end
-  end
-
-  def xit(*args, &blk)
-    it *args do
-      pending "xxxxxxxx"
+      alias xcontext xdescribe
     end
   end
 end
 
-# vim: ft=ruby
+def public_all_methods(*klasses)
+	klasses.each {|klass|
+		klass.class_eval {
+      public *(self.protected_instance_methods(false) + self.private_instance_methods(false))
+      public_class_method *(self.protected_methods(false) + self.private_methods(false))
+    }
+	}
+end

@@ -1,7 +1,5 @@
 libdir = File.dirname(__FILE__); $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 
-#require "tagen/core"
-require "tagen/core/array/extract_options"
 require "active_support/core_ext/string/inflections"
 require "pd"
 require "pa"
