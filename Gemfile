@@ -15,4 +15,5 @@ group :development do
   gem "guard"
   gem "guard-rspec"
 	gem "yard"
+  gem "pimpmychangelog"
 end
