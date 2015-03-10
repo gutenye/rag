@@ -1,0 +1,14 @@
+source "https://rubygems.org"
+#source "http://ruby.taobao.org"
+
+gem "pd"
+gem "thor"
+
+group :development do
+	gem "rspec"
+  gem "guard"
+  gem "guard-rspec"
+  gem "rb-inotify"
+	gem "yard"
+  gem "pimpmychangelog"
+end

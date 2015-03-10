@@ -1,0 +1,8 @@
+hello
+<% if have_ext("app") %>
+app
+<% else %>
+lib
+<% end %>
+
+<%= render "res/#{ext}" %>

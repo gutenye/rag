@@ -1,0 +1,8 @@
+source "https://rubygems.org"
+
+gem "tilt"
+#gem "tagen", "~>1.1.0"
+gem "tagen", path: "/home/guten/dev/one/tagen"
+gem "pa", "~>1.3.0"
+gem "optimism", path: "/home/guten/dev/one/optimism"
+#gem "optimism", "~>3.2.0"

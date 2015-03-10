@@ -1,0 +1,4 @@
+directory2 "template", Rc.app_path
+directory2 "template.app", Rc.app_path
+
+# vim: ft=ruby

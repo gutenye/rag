@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+dir = File.expand_path("../../..", File.symlink?(__FILE__) ? File.readlink(__FILE__) : __FILE__)
+#libdir = File.join(dir, "lib"); $:.unshift(libdir) unless $:.include?(libdir)
+ENV["BUNDLE_GEMFILE"] = File.join(dir, "Gemfile")
+
+require "bundler/setup"
+load File.join(dir, "core/bin/rag")

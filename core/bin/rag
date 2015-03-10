@@ -1,15 +1,8 @@
 #!/usr/bin/env ruby
 require_relative "../lib/rag"
 
-# load Ragfile
-if Pa.exists?("Ragfile")
-	load "Ragfile"
-end
-
-# load tasks/*.rag
-Pa.glob("tasks/*.rag") { |pa|
-	load pa.path
-}
+begin require "rag/init"; rescue LoadError; end
+begin require "rag/new"; rescue LoadError; end
 
 begin
   Rag.start
@@ -22,4 +15,3 @@ rescue Interrupt => e
   Rag.ui.debug e.backtrace.join("\n")
   exit 1
 end
-

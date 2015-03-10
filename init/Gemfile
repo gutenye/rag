@@ -1,0 +1,13 @@
+source "https://rubygems.org"
+
+gem "pd"
+gem "rag-core", :path => "../core"
+
+group :development do
+  gem "rspec"
+  gem "fakefs"
+  gem "guard"
+  gem "guard-rspec"
+  gem "rb-inotify"
+  gem "pimpmychangelog"
+end

@@ -1,8 +1,8 @@
-Kernel.load File.expand_path("../lib/rag/version.rb", __FILE__)
+version = File.read(File.expand_path("../VERSION",__FILE__)).strip
 
 Gem::Specification.new do |s|
 	s.name = "rag"
-	s.version = Rag::VERSION
+	s.version = version
 	s.summary = "A project helper, include create, developing, testing, release"
 	s.description = <<-EOF
 A project helper, include create, develop, test, release helper.  
@@ -16,10 +16,7 @@ A project helper, include create, develop, test, release helper.
 	s.files = `git ls-files`.split("\n")
 	s.executables = %w(rag)
 
-  s.add_dependency "pd"
-  s.add_dependency "tagen", "~>2.0.0"
-	s.add_dependency "pa", "~>1.3.0"
-  s.add_dependency "optimism", "~>3.3.0"
-	s.add_dependency "thor"
-	s.add_dependency "tilt"
+  s.add_dependency "rag-core", version
+  s.add_dependency "rag-new", version
+	s.add_dependency "rag-init", version
 end
